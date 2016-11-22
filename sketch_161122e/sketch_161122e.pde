@@ -1,6 +1,7 @@
 void setup(){
 fullScreen();
 }
+Clock clock= new Clock();
 void draw(){
 background(0);
 //Progress bar that gets increase each second
@@ -8,4 +9,5 @@ background(0);
   stroke(0,255,0); 
   fill(0,255,0);
   rect(0, height-5, w, 30);//Drawing progress bar
+  clock.render();//call  render
 }
