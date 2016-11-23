@@ -14,7 +14,7 @@ int  h = hour();
 
   String time = h + ":" + m + ":" + s;
   textAlign(LEFT, TOP);//Positioning text in the left top corner
-  textSize(50);
+  textSize(30);
   fill(0, 255, 0);
   text(time, 50,50);
 }
