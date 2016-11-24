@@ -23,9 +23,9 @@ void display(){
   triangle(xPos+30, height-30, xPos+70, height-30, xPos+50, height-60);
 }
   void move(){
-     xPos+=5;
-  if(xPos<=width-(border*2) || xPos>0){
-   
+     xPos+= speed;
+  if(xPos > width-(border*2) || xPos <50 ){
+     speed *= -1;
   }
   
   

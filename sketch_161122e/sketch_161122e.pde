@@ -4,7 +4,8 @@ smooth();
 }
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,5);
-;float border=120;
+Circle circle1= new Circle(100);
+float border=120;
 void draw(){
 background(0);
 drawGrid();
