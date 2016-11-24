@@ -7,6 +7,7 @@ Clock clock= new Clock();
 Arrow arrow =new Arrow(50,5);
 Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
+Map worldmap= new Map( border,border, 1200,550);
 
 
 void draw(){
@@ -23,9 +24,10 @@ line.render();
 
 void drawGrid()
 {
-  fill(0);
+  fill(#5AA5F2);
    rect(border,border,width-(border*2),height-(border*2));
-  stroke(255);
+   worldmap.loadMap();
+  stroke(#3677B7);
   textAlign(CENTER, CENTER);
    for(float x = 0 ; x <=30; x ++)
   {
