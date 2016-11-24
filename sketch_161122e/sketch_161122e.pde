@@ -1,6 +1,7 @@
 void setup(){
 fullScreen();
 smooth();
+
 }
 float border=120;
 Clock clock= new Clock();
@@ -8,10 +9,11 @@ Arrow arrow =new Arrow(50,5);
 Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
 Map worldmap= new Map( border,border, 1200,550);
-
+Button btn1=new Button(250,1,"Press");
 
 void draw(){
 background(0);
+btn1.render(1);
 drawGrid();
 clock.render();//call  render
 arrow.display();
@@ -20,6 +22,7 @@ circle1.update();
 circle1.render();
 line.update();
 line.render();
+
 }
 
 void drawGrid()

@@ -3,6 +3,7 @@ class Clock{
 int  s;
 int  m;
 int  h;
+String time;
 //default constructor
 Clock(){
 
@@ -11,8 +12,15 @@ void render() {
 int  s = second();
 int  m = minute();
 int  h = hour();
+if(m<10 && s<10){
+  time = h + ":0" + m + ":0" + s;
+}else if(m<10){
+ time = h + ":0" + m + ":0" + s;
 
-  String time = h + ":" + m + ":" + s;
+}else{
+   time = h + ":" + m + ":" + s;
+}
+ 
   textAlign(LEFT, TOP);//Positioning text in the left top corner
   textSize(30);
   fill(0, 255, 0);
