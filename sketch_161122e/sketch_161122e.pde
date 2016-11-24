@@ -5,6 +5,7 @@ smooth();
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,5);
 Circle circle1= new Circle(60,160,100);
+LifeLine line= new LifeLine(100,100);
 float border=120;
 
 void draw(){
@@ -15,6 +16,8 @@ arrow.display();
 arrow.move();
 circle1.update();
 circle1.render();
+line.update();
+line.render();
 }
 
 void drawGrid()
