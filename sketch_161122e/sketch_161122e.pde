@@ -25,7 +25,7 @@ line.render();
 void drawGrid()
 {
   fill(#5AA5F2);
-   rect(border,border,width-(border*2),height-(border*2));
+  rect(border,border,width-(border*2),height-(border*2));
    worldmap.loadMap();
   stroke(#3677B7);
   textAlign(CENTER, CENTER);
