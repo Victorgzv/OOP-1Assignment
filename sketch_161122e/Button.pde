@@ -8,8 +8,8 @@ class Button{
  PFont font;
  String text;
 
-Button(float y, int inici, String t){
-    xPos = 50;
+Button(float x,float y, int inici, String t){
+    xPos = x;
     yPos = y;
     c = color(255, 0, 0);
     widthB = 30;
@@ -21,11 +21,11 @@ Button(float y, int inici, String t){
 }
   void render(int borde) {
    
-    stroke(borde);
-    fill(c, 162, 123);
+    stroke(255);
+    //fill(c, 162, 123);
     rect(xPos, yPos, widthB, heightB);
     fill(255);
-    text(text, xPos + 10, yPos + 20);
+    text(text, xPos+5 , yPos-5 );
   }
 
 }

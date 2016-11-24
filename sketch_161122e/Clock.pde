@@ -15,7 +15,7 @@ int  h = hour();
 if(m<10 && s<10){
   time = h + ":0" + m + ":0" + s;
 }else if(m<10){
- time = h + ":0" + m + ":0" + s;
+ time = h + ":0" + m + ":" + s;
 
 }else{
    time = h + ":" + m + ":" + s;
