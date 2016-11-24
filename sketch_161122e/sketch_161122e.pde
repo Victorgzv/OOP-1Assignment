@@ -2,11 +2,12 @@ void setup(){
 fullScreen();
 smooth();
 }
+float border=120;
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,5);
 Circle circle1= new Circle(60,160,100);
-LifeLine line= new LifeLine(100,100);
-float border=120;
+LifeLine line= new LifeLine(border,180);
+
 
 void draw(){
 background(0);
@@ -22,7 +23,8 @@ line.render();
 
 void drawGrid()
 {
-  fill(255, 0, 255);
+  fill(0);
+   rect(border,border,width-(border*2),height-(border*2));
   stroke(255);
   textAlign(CENTER, CENTER);
    for(float x = 0 ; x <=30; x ++)
@@ -38,7 +40,7 @@ void drawGrid()
     line(border, ly, width - border, ly);
     //text((int) y, 10, ly);
   }
- 
+  
   
  
   
