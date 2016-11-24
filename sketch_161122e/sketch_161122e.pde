@@ -4,14 +4,17 @@ smooth();
 }
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,5);
-Circle circle1= new Circle(100);
+Circle circle1= new Circle(60,160,100);
 float border=120;
+
 void draw(){
 background(0);
 drawGrid();
 clock.render();//call  render
 arrow.display();
 arrow.move();
+circle1.update();
+circle1.render();
 }
 
 void drawGrid()
