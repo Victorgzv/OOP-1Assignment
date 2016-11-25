@@ -10,9 +10,11 @@ Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
 Map worldmap= new Map( border,border, 1200,550);
 Button btn1=new Button(50,500,1,"x");
+Target target = new Target();
 
 void draw(){
 background(0);
+
 
 drawGrid();
 clock.render();//call  render
@@ -23,10 +25,13 @@ circle1.render();
 line.update();
 line.render();
 btn1.render(1);
+target.render();
+
+
 }
 
-void drawGrid()
-{
+void drawGrid
+(){
   fill(#5AA5F2);
   rect(border,border,width-(border*2),height-(border*2));
    worldmap.loadMap();
@@ -44,10 +49,13 @@ void drawGrid()
     float ly = map(y, 0, 15, border, height - border);
     line(border, ly, width - border, ly);
     //text((int) y, 10, ly);
+ 
+
+
+
+
+  
+ 
+  
   }
-  
-  
- 
-  
- 
 }
