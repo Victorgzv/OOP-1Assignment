@@ -10,7 +10,7 @@ Target(){
 void render(){
 if(mouseX>border && mouseX< width-border && mouseY<height-border && mouseY>border){
 stroke(255,0,0);
-strokeWeight(5);
+
 noFill();
 
 beginShape();
