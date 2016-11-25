@@ -11,8 +11,12 @@ void render(){
 if(mouseX>border && mouseX< width-border && mouseY<height-border && mouseY>border){
 stroke(255,0,0);
 
-noFill();
 
+textSize(10);
+fill(255);
+String coord=mouseX+","+mouseY;
+text(coord, mouseX+8 , mouseY+30 );
+noFill();
 beginShape();
 vertex(20+mouseX, 50+mouseY);
 vertex(50+mouseX, 50+mouseY);
