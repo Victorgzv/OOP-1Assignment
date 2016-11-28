@@ -41,7 +41,7 @@ wave.render();
 }
 void loadMapPoints()
 {
-  Table table = loadTable("countries.csv", "header");
+  Table table = loadTable("country-capitals.csv", "header");
   for(TableRow row:table.rows())
   {
     Point point = new Point(row);    
@@ -49,25 +49,27 @@ void loadMapPoints()
   }
 }
 void drawPoints(){
-  point = new Point(53.33,-6.25);//longitude,latitude
-float x = point.screenPos.x;
+   for(Point point:points)
+  {
+    float x = point.screenPos.x;
     float y = point.screenPos.y;  
-    println("point: "+point.screenPos.x);
-    stroke(255, 0, 0);
+    stroke(255, 255, 0);
     line(x-2, y, x+2, y);
     line(x, y - 2, x, y + 2);    
-     stroke(255, 0, 0);  
+    stroke(255, 0, 0);  
     noFill();
-    ellipse(x, y, 30,30);
+    ellipse(x, y, 30,20);
+    
+    //textAlign(LEFT, CENTER);
+    //fill(255);
+    //text(star.displayName, x + 10, y - 2);
+    
+  }  
 
 
 
 }
-public PVector geoToPixel(PVector geoLocation)
-{
-    return new PVector(mapScreenWidth*(geoLocation.x-mapGeoLeft)/(mapGeoRight-mapGeoLeft),
-                       mapScreenHeight - mapScreenHeight*(geoLocation.y-mapGeoBottom)/(mapGeoTop-mapGeoBottom));
-}
+
 void drawGrid(){
 
   fill(#5AA5F2);
