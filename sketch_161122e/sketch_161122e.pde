@@ -1,8 +1,4 @@
 PImage backgroundMap;
-float mapGeoLeft   =120;          // Longitude 125 degrees west
-float mapGeoRight  =  153.44;          // Longitude 153 degrees east
-float mapGeoTop    =   71.89;          // Latitude 72 degrees north.
-float mapGeoBottom =  -56.11;          // Latitude 56 degrees south.
 float mapScreenWidth,mapScreenHeight;  // Dimension of map in pixels.
 float border=120;
 Clock clock= new Clock();
@@ -13,15 +9,15 @@ LifeLine line= new LifeLine(border,180);
 Button btn1=new Button(50,500,1,"x");
 Target target = new Target();
 Wave wave= new Wave(60,250);
-
+ArrayList<Point> points = new ArrayList<Point>(); 
 void setup(){
 fullScreen();
 smooth();
+backgroundMap   = loadImage("w4.jpg");
+loadMapPoints();
+mapScreenWidth  = width-(border*2);
+mapScreenHeight = height-(border*2);
  
-  backgroundMap   = loadImage("w4.jpg");
-  mapScreenWidth  = width-(border*2);
-  mapScreenHeight = height-(border*2);
-
 }
 Point point ;    
 void draw(){
@@ -42,6 +38,15 @@ target.render();
 wave.render();
 
 
+}
+void loadMapPoints()
+{
+  Table table = loadTable("countries.csv", "header");
+  for(TableRow row:table.rows())
+  {
+    Point point = new Point(row);    
+    points.add(point);
+  }
 }
 void drawPoints(){
   point = new Point(53.33,-6.25);//longitude,latitude
