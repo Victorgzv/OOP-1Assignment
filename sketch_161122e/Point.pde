@@ -1,6 +1,9 @@
 class Point
 {
   String displayName;
+  float distance;
+  float magnitude;
+  String displayName;
   float posX,posY;
   float magnitude;
   boolean habitable;

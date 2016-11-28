@@ -44,7 +44,7 @@ wave.render();
 
 }
 void drawPoints(){
-  point = new Point(35.7,139.8);   //Latitude, longitude
+  point = new Point(53.33,-6.25);//longitude,latitude
 float x = point.screenPos.x;
     float y = point.screenPos.y;  
     println("point: "+point.screenPos.x);
