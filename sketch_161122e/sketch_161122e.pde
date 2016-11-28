@@ -10,6 +10,7 @@ Button btn1=new Button(50,500,1,"x");
 Target target = new Target();
 Wave wave= new Wave(60,250);
 ArrayList<Point> points = new ArrayList<Point>(); 
+
 void setup(){
 fullScreen();
 smooth();
@@ -19,13 +20,37 @@ mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
  
 }
-Point point ;    
+int selected = -1;
+void mousePressed()
+{
+  for(int i = 0 ; i < points.size() ; i ++)
+  {
+    Point point = points.get(i);
+    
+    if (dist(mouseX, mouseY, point.screenPos.x, point.screenPos.y)<10)
+    {
+    if (selected == -1)
+      {
+        selected = i;
+      }
+   
+    }else{
+        selected =-1;
+    }
+  }  
+}    
 void draw(){
 background(0);
 println("width "+(width-(border*2)));
 println("height "+(height-(border*2)));
 drawGrid();
 drawPoints();
+if (selected != -1 )
+  {
+    Point point1 = points.get(selected);
+    stroke(255, 255, 0);
+    text(point1.country, border, height - 25);
+  }
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -38,7 +63,11 @@ target.render();
 wave.render();
 
 
-}
+
+
+ }
+
+
 void loadMapPoints()
 {
   Table table = loadTable("country-capitals.csv", "header");
@@ -58,11 +87,11 @@ void drawPoints(){
     line(x, y - 2, x, y + 2);    
     stroke(255, 0, 0);  
     noFill();
-    ellipse(x, y, 30,20);
+    ellipse(x, y, 20,20);
     
-    //textAlign(LEFT, CENTER);
-    //fill(255);
-    //text(star.displayName, x + 10, y - 2);
+  
+    
+   
     
   }  
 
