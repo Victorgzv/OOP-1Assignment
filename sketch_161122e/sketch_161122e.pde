@@ -40,7 +40,7 @@ background(0);
 drawGrid();
 drawPoints();
 displayCoordinates();
-  
+
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -53,6 +53,9 @@ target.render();
 wave.render();
 
 
+   
+   
+ 
 
 
  }
@@ -115,8 +118,12 @@ void drawPoints(){
    for(Point point:points)
   {
     float x = point.screenPos.x;
-    float y = point.screenPos.y;  
+    float y = point.screenPos.y; 
+    Earthquake e1= new Earthquake(x,y,50,0.5);
+    stroke(#00A511);
+    e1.render();
     imageMode(CENTER);
     image(points_img,x,y,25,25);
+    
   }  
 }

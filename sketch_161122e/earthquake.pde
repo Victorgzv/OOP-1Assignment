@@ -1,24 +1,26 @@
 class Earthquake{
- float posX, posY;
-  float size, store_size;
-  float theta=0;
+float posX,posY,diameter;
+float angle,speed;
 
-Earthquake(float x, float y, float sz) {
-  posX = x;
-  posY = y;
-  size = sz;
-  store_size = _sz;
+Earthquake(float x, float y, float diameter,float speed) {
+posX = x;
+posY = y;
+angle=0;
+this.speed=speed;
+this.diameter= diameter;
 }
-void display() {
+void render(){
+  float d1 = 30 + (sin(angle + PI/3) * diameter/3) + diameter/3;
+  float d2 = 20 + (sin(angle + PI/2) * diameter/2) + diameter/2;
+  float d3 = 5 + (sin(angle + PI/2) * diameter/2) + diameter/2;
   
-    pushMatrix();
-    translate(x, y);
-    ellipse(0, 0, sz, sz);
-    popMatrix();
-    sz +=.8;
+   ellipse(posX,posY, d1, d1);
+  ellipse(posX,posY, d2, d2);
+  ellipse(posX,posY, d3, d3);
+  angle += speed;
+}
+void update(){
 
-    if (sz>100) {
-      kill = true;
-    }
-  }
+ 
+}
 }
