@@ -2,3 +2,19 @@ CountryName,CapitalName,CapitalLatitude,CapitalLongitude,CountryCode,ContinentNa
 Spain,Madrid,40.4,-3.683333,ES,Europe
 Venezuela,Caracas,10.483333333333333,-66.866667,VE,South America
 United States,Washington,38.883333,-77.000000,US,Central America
+China,Beijing,39.916666666666664,116.383333,CN,Asia
+Cuba,Havana,23.116666666666667,-82.350000,CU,North America
+Italy,Rome,41.9,12.483333,IT,Europe
+Syria,Damascus,33.5,36.300000,SY,Asia
+United Kingdom,London,51.5,-0.083333,GB,Europe
+Ireland,Dublin,53.31666666666667,-6.233333,IE,Europe
+India,New Delhi,28.6,77.200000,IN,Asia
+Thailand,Bangkok,13.75,100.516667,TH,Asia
+Japan,Tokyo,35.68333333333333,139.750000,JP,Asia
+Morocco,Rabat,34.016666666666666,-6.816667,MA,Africa
+Madagascar,Antananarivo,-18.916666666666668,47.516667,MG,Africa
+Chile,Santiago,-33.45,-70.666667,CL,South America
+Brazil,Brasilia,-15.783333333333333,-47.916667,BR,South America
+Equatorial Guinea,Malabo,3.75,8.783333,GQ,Africa
+North Korea,Pyongyang,39.016666666666666,125.750000,KP,Asia
+Russia,Moscow,55.75,37.600000,RU,Europe

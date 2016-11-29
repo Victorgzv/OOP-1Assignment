@@ -87,9 +87,10 @@ void drawPoints(){
   }  
 }
 void drawSelectedPoints(){
+   stroke(0,255,0); 
   textSize(8);
   textFont(mono);
-  stroke(0,255,0);
+ 
 if (selected != -1 )
   {
     Point point1 = points.get(selected);
@@ -102,7 +103,7 @@ if (selected != -1 )
 }
 void drawGrid(){
 
-  fill(#5AA5F2);
+  
   rect(border,border,width-(border*2),height-(border*2));
   //worldmap.loadMap();
     image(backgroundMap,border,border,mapScreenWidth,mapScreenHeight);
