@@ -8,7 +8,7 @@ Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
 //Button btn1=new Button(50,500,1,"x");
 Target target = new Target();
-Wave wave= new Wave(60,250);
+Wave wave= new Wave(60,250,0.1);
 ArrayList<Point> points = new ArrayList<Point>(); 
 ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>(); 
 void setup(){
@@ -94,31 +94,42 @@ void loadMapPoints()
     Float magnitude= point.magnitude;
     float eq_size=0;
     color c=color(0,255,0);
+    String description="";
     //Richter magnutude scale
     if(magnitude>0 && magnitude <=1.0){
      eq_size=5;
       c=color(0,0,255);
+      description="No risk";
     }else if(magnitude>=1.0 && magnitude <=1.9){
      eq_size=10;
-     
+      description="Micro";
     }else if(magnitude>=2.0 && magnitude <=3.9){
      eq_size=20;
+     description="Minor";
     }else if(magnitude>=4.0 && magnitude <=4.9){
      eq_size=30;
+     description="Light";
     }else if(magnitude>=5.0 && magnitude <=5.9){
      eq_size=40;
+      description="Moderate";
     }else if(magnitude>=6.0 && magnitude <=6.9){
      eq_size=50;
+      c=color(#FCF21F);
+      description="Strong";
     }else if(magnitude>=7.0 && magnitude <=7.9){
       eq_size=60;
+       description="Major";
     }else if(magnitude>=8.0 && magnitude <=8.9){
       eq_size=70;
+       c=color(255,0,0);
+       description="Great";
     }else if(magnitude>=9.0){
        eq_size=80;
+       description="Great";
        c=color(255,0,0);
     }
     
-     Earthquake eq= new Earthquake (x,y,eq_size,0.9,name,c,description);
+     Earthquake eq= new Earthquake (x,y,eq_size,0.9,name,c,description,magnitude);
      earthquakes.add(eq);
      //println(point.country +" "+eq.posX+" "+eq.posY);
      
@@ -145,7 +156,9 @@ if (selected2 != -1  )
     Earthquake eqs = earthquakes.get(selected2);
   
     text(eqs.name, 10,500);
-   
+    text("Magnitude: "+eqs.magnitude, 10,520);
+    text("Risk: "+ eqs.description, 10,540);
+    wave.magnitude=eqs.magnitude;
    
     
     
