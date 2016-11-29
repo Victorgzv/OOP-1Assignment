@@ -1,3 +1,4 @@
+PFont mono;
 PImage backgroundMap;
 float mapScreenWidth,mapScreenHeight;  // Dimension of map in pixels.
 float border=120;
@@ -17,7 +18,7 @@ backgroundMap   = loadImage("w4.jpg");
 loadMapPoints();
 mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
- 
+mono = createFont("lucida-console.ttf",10);
 }
 int selected = -1;
 void mousePressed()
@@ -31,19 +32,13 @@ void mousePressed()
         selected = i;
     }
   }  
-}    
+}  
+float zoom=1;
 void draw(){
 background(0);
-
 drawGrid();
 drawPoints();
-if (selected != -1 )
-  {
-    Point point1 = points.get(selected);
-    stroke(255);
-     println(selected);
-    text(point1.capital, border, height - 25);
-  }
+drawSelectedPoints();
   
 clock.render();//call  render
 arrow.display();
@@ -60,8 +55,15 @@ wave.render();
 
 
  }
-
-
+void keyPressed() {
+  if (key == CODED) {
+   /* if (keyCode == UP) {
+      zoom += .03;
+    }else if (keyCode == DOWN) {
+      zoom -= .03;
+    } */
+  }
+}
 void loadMapPoints()
 {
   Table table = loadTable("country-capitals.csv", "header");
@@ -81,18 +83,23 @@ void drawPoints(){
     line(x, y - 2, x, y + 2);    
     stroke(255, 0, 0);  
     noFill();
-    ellipse(x, y, 20,20);
-    
-  
-    
-   
-    
+    ellipse(x, y, 20,20); 
   }  
-
-
-
 }
-
+void drawSelectedPoints(){
+  textSize(8);
+  textFont(mono);
+  stroke(0,255,0);
+if (selected != -1 )
+  {
+    Point point1 = points.get(selected);
+    println(selected);
+    text(point1.country, 20,500);
+    text(point1.capital, 20,520);
+    text(point1.longitude+"º",20,540);
+    text(point1.latitude+"º", 20,560);
+  }
+}
 void drawGrid(){
 
   fill(#5AA5F2);
@@ -100,26 +107,17 @@ void drawGrid(){
   //worldmap.loadMap();
     image(backgroundMap,border,border,mapScreenWidth,mapScreenHeight);
   stroke(#3677B7);
-  textAlign(CENTER, CENTER);
-   for(float x = 0 ; x <=30; x ++)
+ 
+   for(float x = 0 ; x <=360; x +=10)
   {
-    float lx = map(x, 0, 30, border, width - border);
+    float lx = map(x, 0, 360, border, width - border);
     line(lx, border, lx, height - border);
    
   }
   
-  for(float y = 0 ; y <=15; y ++)
+  for(float y = 0 ; y <=180; y +=10)
   {
-    float ly = map(y, 0, 15, border, height - border);
-    line(border, ly, width - border, ly);
-   
- 
-
-
-
-
-  
- 
-  
+    float ly = map(y, 0, 180, border, height - border);
+    line(border, ly, width - border, ly); 
   }
 }
