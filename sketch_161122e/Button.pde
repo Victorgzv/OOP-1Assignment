@@ -19,7 +19,7 @@ Button(float x,float y, int inici, String t){
     //textFont(font);
     text = t;
 }
-  void render(int borde) {
+  void render() {
    
     stroke(255);
     //fill(c, 162, 123);

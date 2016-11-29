@@ -10,7 +10,7 @@ this.magnitude= magnitude;
 void render(){
 translate(posX,posY);
 stroke(255);
-  float theta = TWO_PI*frameCount * magnitude/0.5;
+  float theta = TWO_PI*frameCount * (magnitude/200);
   for (int y = 0; y < 200; y += 5) {
     float x = sin(theta+y*5)*40;
     line(-x, y, x, y);
