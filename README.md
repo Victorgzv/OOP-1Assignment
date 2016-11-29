@@ -1,5 +1,5 @@
 For this first assignment I have created a processing sketch that draws a world map scanner simulation displaying nuclear bombs alerts and the epicentre of eartquakes in different coordenates of the map. Therefor, this sketch will be loading coordinates (longitude,latitude) from a file called country-capitals.csv in the data folder.
-
+https://www.youtube.com/watch?v=dDWYZTuMcGo&feature=youtu.be
 The file is in CSV format and is structured as follows:
 
 CountryName,CapitalName,CapitalLatitude,CapitalLongitude,Status,Magnitude
