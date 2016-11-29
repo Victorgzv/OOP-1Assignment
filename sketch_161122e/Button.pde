@@ -5,9 +5,9 @@ class Button {
   float w;    // width of button
   float h;    // height of button
   
-  Button(String labelB, float ypos, float widthB, float heightB) {
+  Button(String labelB,float xpos, float ypos, float widthB, float heightB) {
     label = labelB;
-    x = (width-border)+5;
+    x = xpos;
     y = ypos;
     w = widthB;
     h = heightB;

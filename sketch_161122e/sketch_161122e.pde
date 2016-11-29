@@ -6,7 +6,7 @@ float border=120;
 Button btn1;
 Button btn2, increase, decrease;
 Clock clock= new Clock();
-Arrow arrow =new Arrow(50,1);
+Arrow arrow;
 Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
 
@@ -21,18 +21,20 @@ smooth();
 backgroundMap   = loadImage("w4.jpg");
 points_img   = loadImage("nuclear.png");
 loadMapPoints();
+arrow =new Arrow(50,1);
 mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
 mono = createFont("lucida-console.ttf",10);
 // create the button object
- btn1=new Button("Nuclear Warning",120,100,30);
- btn2=new Button("Eartquake Warning",160,105,30);
- increase=new Button("+",180,10,30);
- decrease=new Button("-",200,10,30);
+ btn1=new Button("Nuclear Warning",(width-border)+5,120,100,30);
+ btn2=new Button("Eartquake Warning",(width-border)+5,160,105,30);
+ increase=new Button("+",(width-border)+25,(height-border)+15,30,30);
+ decrease=new Button("-",(width-border)+65,(height-border)+15,30,30);
 }
+float sp;    
 int selected = -1;
 int selected2 = -1;
-boolean opt1,opt2;
+boolean opt1,opt2,opt3,opt4;
 void mousePressed(){
   for(int i = 0 ; i < points.size() ; i ++){
     Point point = points.get(i);
@@ -59,6 +61,14 @@ void mousePressed(){
    opt2=true; 
    opt1=false; 
   }
+  if (increase.MouseIsOver()) {
+    opt3=true;
+    arrow.speed++;
+  }
+  if (decrease.MouseIsOver()) {
+     opt4=true;
+      arrow.speed--;
+  }
 }  
 
 void draw(){
@@ -83,6 +93,8 @@ decrease.render();
 clock.render();//call  render
 arrow.display();
 arrow.move();
+
+
 circle1.update();
 circle1.render();
 line.update();
