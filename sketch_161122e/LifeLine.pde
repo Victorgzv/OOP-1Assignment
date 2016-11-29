@@ -10,7 +10,7 @@ class LifeLine{
 
 void render() {
   noFill();
-  stroke(#087C06);
+  stroke(255,0,0);
   beginShape();
   for (int i=0;i<lines.size();i++) {
     LifeLine P = (LifeLine)lines.get(i);
@@ -21,7 +21,7 @@ void render() {
   endShape();
 }
 void update() {
-  float t = random(y-magnitude, y);
+  float t = random(y-(magnitude/4), y);
   LifeLine P = new LifeLine(x,t,magnitude);
   lines.add(P);
 }

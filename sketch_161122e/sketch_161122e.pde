@@ -8,7 +8,8 @@ Button btn2, increase, decrease;
 Clock clock= new Clock();
 Arrow arrow;
 Circle circle1= new Circle(60,160,100);
-LifeLine line= new LifeLine(border,180,0);
+Circle circle2= new Circle(60,160,100);
+LifeLine line= new LifeLine(border,120,0);
 Target target = new Target();
 Wave wave= new Wave(60,250,0.1);
 ArrayList<Point> points = new ArrayList<Point>(); 
@@ -25,8 +26,8 @@ mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
 mono = createFont("lucida-console.ttf",10);
 // create the button object
- btn1=new Button("Nuclear Warning",(width-border)+5,120,100,30);
- btn2=new Button("Eartquake Warning",(width-border)+5,160,105,30);
+ btn1=new Button("Nuclear Warning",(width-border)+5,300,100,30);
+ btn2=new Button("Eartquake Warning",(width-border)+5,350,105,30);
  increase=new Button("+",(width-border)+25,(height-border)+15,30,30);
  decrease=new Button("-",(width-border)+65,(height-border)+15,30,30);
 }
