@@ -1,5 +1,5 @@
 For this first assignment I have created a processing sketch that draws a world map scanner simulation displaying nuclear bombs alerts and the epicentre of eartquakes in different coordenates of the map. Therefor, this sketch will be loading coordinates (longitude,latitude) from a file called country-capitals.csv in the data folder.
-https://www.youtube.com/watch?v=dDWYZTuMcGo&feature=youtu.be
+
 The file is in CSV format and is structured as follows:
 
 CountryName,CapitalName,CapitalLatitude,CapitalLongitude,Status,Magnitude
@@ -13,3 +13,5 @@ There are different engines such as waves, intensity and life of the seismic tha
 I have used for and if statements to control the map boundries.the Map function has been to scale the world map coordinates and in order to place point into the map. Trigonometry (sin and cos) are used to represent waves and draw circle animations. I have also used time functions, image, shape, translate and rotate functions. 
 
 This is just a simple simulation of the world threats loading data from a csv file using these values to create animations in order to achieve a sci-fi screen.
+
+Link to youtube video: https://www.youtube.com/watch?v=dDWYZTuMcGo&feature=youtu.be
