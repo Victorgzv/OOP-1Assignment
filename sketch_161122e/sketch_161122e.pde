@@ -5,18 +5,19 @@ float border=120;
 
 Button btn1;
 Button btn2, increase, decrease;
-Clock clock= new Clock();
+Clock clock;
+Box box;
 Arrow arrow;
-Circle circle1= new Circle(60,160,100);
-Circle circle2= new Circle(60,160,100);
+Circle circle1;
+Circle circle2;
 LifeLine line= new LifeLine(border,120,0);
 Target target = new Target();
 Wave wave= new Wave(60,250,0.1);
 ArrayList<Point> points = new ArrayList<Point>(); 
 ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>(); 
 void setup(){
-
-fullScreen();
+fullScreen(P3D);
+clock= new Clock();
 smooth();
 backgroundMap   = loadImage("w4.jpg");
 points_img   = loadImage("nuclear.png");
@@ -26,10 +27,13 @@ mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
 mono = createFont("lucida-console.ttf",10);
 // create the button object
- btn1=new Button("Nuclear Warning",(width-border)+5,300,100,30);
- btn2=new Button("Eartquake Warning",(width-border)+5,350,105,30);
+ btn1=new Button("Nuclear Warning",10,480,100,30);
+ btn2=new Button("Eartquake Warning",(width-border)+5,220,105,30);
  increase=new Button("+",(width-border)+25,(height-border)+15,30,30);
  decrease=new Button("-",(width-border)+65,(height-border)+15,30,30);
+ circle1= new Circle(60,160,100);
+ circle2= new Circle((width-border)+60,160,50);
+ box= new Box((width-border)+1,300);
 }
 float sp;    
 int selected = -1;
@@ -73,10 +77,6 @@ void mousePressed(){
 
 void draw(){
 background(0);
-
-textFont(mono);
-text("Nuclear Info.", 10,500);
-text("Eartquake Info.", 10,620);
 drawGrid();
 if(opt1){
   drawPoints();
@@ -97,13 +97,15 @@ arrow.move();
 
 circle1.update();
 circle1.render();
+circle2.update();
+circle2.render();
 line.update();
 line.render();
 target.render();
 displayNuclearCoordinates();
 displayEQCoordinates();
 wave.render();
-
+box.render();
 
    
    
@@ -205,9 +207,9 @@ if (selected2 != -1  )
   {
     Earthquake eqs = earthquakes.get(selected2);
   
-    text(eqs.name, 10,640);
-    text("Magnitude: "+eqs.magnitude, 10,660);
-    text("Risk: "+ eqs.description, 10,680);
+    text(eqs.name, (width-border)+25,280);
+    text("Magnitude: "+eqs.magnitude, (width-border)+25,300);
+    text("Risk: "+ eqs.description, (width-border)+25,320);
     wave.magnitude=eqs.magnitude;
     line.magnitude=eqs.diameter;
     }  
