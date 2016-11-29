@@ -1,31 +1,31 @@
-class Button{
- float xPos;
- float yPos;
- color c;
- float widthB;
- float heightB;
- int pantallaActual;
- PFont font;
- String text;
-
-Button(float x,float y, int inici, String t){
-    xPos = x;
-    yPos = y;
-    c = color(255, 0, 0);
-    widthB = 30;
-    heightB = 30;
-    pantallaActual = inici;
-    //font = createFont("Arial", 12);
-    //textFont(font);
-    text = t;
-}
-  void render() {
-   
-    stroke(255);
-    //fill(c, 162, 123);
-    rect(xPos, yPos, widthB, heightB);
-    fill(255);
-    text(text, xPos+5 , yPos-5 );
+class Button {
+  String label;
+  float x;    // top left corner x position
+  float y;    // top left corner y position
+  float w;    // width of button
+  float h;    // height of button
+  
+  Button(String labelB, float ypos, float widthB, float heightB) {
+    label = labelB;
+    x = (width-border)+5;
+    y = ypos;
+    w = widthB;
+    h = heightB;
   }
-
+  
+  void render() {
+    fill(218);
+    stroke(141);
+    rect(x, y, w, h, 10);
+    textAlign(CENTER, CENTER);
+    fill(0);
+    text(label, x + (w / 2), y + (h / 2));
+  }
+  
+  boolean MouseIsOver() {
+    if (mouseX > x && mouseX < (x + w) && mouseY > y && mouseY < (y + h)) {
+      return true;
+    }
+    return false;
+  }
 }

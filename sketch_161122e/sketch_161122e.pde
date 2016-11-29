@@ -2,16 +2,20 @@ PFont mono;
 PImage backgroundMap,points_img;
 float mapScreenWidth,mapScreenHeight;  // Dimension of map in pixels.
 float border=120;
+
+Button btn1;
+Button btn2;
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,1);
 Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
-//Button btn1=new Button(50,500,1,"x");
+
 Target target = new Target();
 Wave wave= new Wave(60,250,0.1);
 ArrayList<Point> points = new ArrayList<Point>(); 
 ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>(); 
 void setup(){
+
 fullScreen();
 smooth();
 backgroundMap   = loadImage("w4.jpg");
@@ -20,11 +24,14 @@ loadMapPoints();
 mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
 mono = createFont("lucida-console.ttf",10);
+// create the button object
+ btn1=new Button("Nuclear Warning",120,100,30);
+ btn2=new Button("Eartquake Warning",160,105,30);
 }
 int selected = -1;
 int selected2 = -1;
-void mousePressed()
-{
+boolean opt1,opt2;
+void mousePressed(){
   for(int i = 0 ; i < points.size() ; i ++){
     Point point = points.get(i);
     
@@ -41,15 +48,32 @@ void mousePressed()
         selected2 = i;
     }
   }
+  if (btn1.MouseIsOver()) {
+   opt1=true;
+   opt2=false; 
+  
+  }
+  if (btn2.MouseIsOver()) {
+   opt2=true; 
+   opt1=false; 
+  }
 }  
-float zoom=1;
+
 void draw(){
 background(0);
-drawGrid();
-drawPoints();
 
-displayCoordinates();
-drawEQ();
+drawGrid();
+if(opt1){
+  drawPoints();
+}
+if(opt2){
+ drawEQ();
+}
+
+
+btn1.render();
+btn2.render();
+
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -57,8 +81,13 @@ circle1.update();
 circle1.render();
 line.update();
 line.render();
-//btn1.render(1);
 target.render();
+stroke(255);
+  text("Nuclear Info.", 10,500);
+  text("Eartquake Info.", 10,620);
+  
+ displayNuclearCoordinates();
+ displayEQCoordinates();
 wave.render();
 
 
@@ -137,41 +166,40 @@ void loadMapPoints()
   }
 }
 
-void displayCoordinates(){
-   stroke(#00A511);
+void displayNuclearCoordinates(){
+  stroke(255);
   textSize(12);
   textFont(mono);
- 
+
 if (selected != -1  )
   {
     Point point1 = points.get(selected);
   
-    text(point1.country, 10,500);
-    text(point1.capital, 10,520);
-    text(point1.longitude+"º",10,540);
-    text(point1.latitude+"º", 10,560);
+    text(point1.country, 10,520);
+    text(point1.capital, 10,540);
+    text(point1.longitude+"º",10,560);
+    text(point1.latitude+"º", 10,580);
     }
+
+  }
+void displayEQCoordinates(){
+  stroke(255);
+  textSize(12);
+  textFont(mono);
+ 
 if (selected2 != -1  )
   {
     Earthquake eqs = earthquakes.get(selected2);
   
-    text(eqs.name, 10,500);
-    text("Magnitude: "+eqs.magnitude, 10,520);
-    text("Risk: "+ eqs.description, 10,540);
-    wave.magnitude=eqs.magnitude;
-   
-    
-    
-    }
-    
-    
+    text(eqs.name, 10,640);
+    text("Magnitude: "+eqs.magnitude, 10,660);
+    text("Risk: "+ eqs.description, 10,680);
+    wave.magnitude=eqs.magnitude;    
+    }  
   }
 
 void drawGrid(){
-
-  
-  rect(border,border,width-(border*2),height-(border*2));
-      imageMode(CORNER);
+  imageMode(CORNER);
   image(backgroundMap,border,border,mapScreenWidth,mapScreenHeight);
   stroke(#3677B7);
  
