@@ -4,7 +4,7 @@ float mapScreenWidth,mapScreenHeight;  // Dimension of map in pixels.
 float border=120;
 
 Button btn1;
-Button btn2;
+Button btn2, increase, decrease;
 Clock clock= new Clock();
 Arrow arrow =new Arrow(50,1);
 Circle circle1= new Circle(60,160,100);
@@ -27,6 +27,8 @@ mono = createFont("lucida-console.ttf",10);
 // create the button object
  btn1=new Button("Nuclear Warning",120,100,30);
  btn2=new Button("Eartquake Warning",160,105,30);
+ increase=new Button("+",180,10,30);
+ decrease=new Button("-",200,10,30);
 }
 int selected = -1;
 int selected2 = -1;
@@ -62,6 +64,9 @@ void mousePressed(){
 void draw(){
 background(0);
 
+textFont(mono);
+text("Nuclear Info.", 10,500);
+text("Eartquake Info.", 10,620);
 drawGrid();
 if(opt1){
   drawPoints();
@@ -73,7 +78,8 @@ if(opt2){
 
 btn1.render();
 btn2.render();
-
+increase.render();
+decrease.render();
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -82,12 +88,8 @@ circle1.render();
 line.update();
 line.render();
 target.render();
-stroke(255);
-  text("Nuclear Info.", 10,500);
-  text("Eartquake Info.", 10,620);
-  
- displayNuclearCoordinates();
- displayEQCoordinates();
+displayNuclearCoordinates();
+displayEQCoordinates();
 wave.render();
 
 
