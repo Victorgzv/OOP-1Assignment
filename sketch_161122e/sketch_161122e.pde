@@ -8,8 +8,7 @@ Button btn2, increase, decrease;
 Clock clock= new Clock();
 Arrow arrow;
 Circle circle1= new Circle(60,160,100);
-LifeLine line= new LifeLine(border,180);
-
+LifeLine line= new LifeLine(border,180,0);
 Target target = new Target();
 Wave wave= new Wave(60,250,0.1);
 ArrayList<Point> points = new ArrayList<Point>(); 
@@ -208,7 +207,8 @@ if (selected2 != -1  )
     text(eqs.name, 10,640);
     text("Magnitude: "+eqs.magnitude, 10,660);
     text("Risk: "+ eqs.description, 10,680);
-    wave.magnitude=eqs.magnitude;    
+    wave.magnitude=eqs.magnitude;
+    line.magnitude=eqs.diameter;
     }  
   }
 
