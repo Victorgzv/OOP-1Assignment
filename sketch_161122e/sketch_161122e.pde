@@ -22,6 +22,7 @@ mapScreenHeight = height-(border*2);
 mono = createFont("lucida-console.ttf",10);
 }
 int selected = -1;
+int selected2 = -1;
 void mousePressed()
 {
   for(int i = 0 ; i < points.size() ; i ++){
@@ -32,16 +33,23 @@ void mousePressed()
         selected = i;
     }
   }
-   
+   for(int i = 0 ; i < earthquakes.size() ; i ++){
+    Earthquake eqs = earthquakes.get(i);
+    
+    if (dist(mouseX, mouseY, eqs.posX, eqs.posY)<20)
+    {
+        selected2 = i;
+    }
+  }
 }  
 float zoom=1;
 void draw(){
 background(0);
 drawGrid();
 drawPoints();
-drawEQ();
-displayCoordinates();
 
+displayCoordinates();
+drawEQ();
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -78,12 +86,14 @@ void loadMapPoints()
     if(row.getString("Status").equals("Nuclear")){
      
       points.add(point);
-    }else{
+    }else if(row.getString("Status").equals("EQ")){
+    
     float x = point.screenPos.x;
     float y = point.screenPos.y; 
-   
-     Earthquake eq= new Earthquake (x,y,50,0.5);
+    String name= point.country;
+     Earthquake eq= new Earthquake (x,y,50,0.5,name);
      earthquakes.add(eq);
+     //println(point.country +" "+eq.posX+" "+eq.posY);
      
     }
   }
@@ -94,16 +104,29 @@ void displayCoordinates(){
   textSize(12);
   textFont(mono);
  
-if (selected != -1 )
+if (selected != -1  )
   {
     Point point1 = points.get(selected);
-    
+  
     text(point1.country, 10,500);
     text(point1.capital, 10,520);
     text(point1.longitude+"º",10,540);
     text(point1.latitude+"º", 10,560);
+    }
+if (selected2 != -1  )
+  {
+    Earthquake eqs = earthquakes.get(selected2);
+  
+    text(eqs.name, 10,500);
+   
+   
+    
+    
+    }
+    
+    
   }
-}
+
 void drawGrid(){
 
   
@@ -139,6 +162,7 @@ void drawPoints(){
 void drawEQ(){
   for(Earthquake eq:earthquakes)
   {
+     stroke(#00A511);
     eq.render();
   }
   

@@ -1,12 +1,13 @@
 class Earthquake{
 float posX,posY,diameter;
-float angle,speed;
-
-Earthquake(float x, float y, float diameter,float speed) {
+float angle,speedV;
+String name;
+Earthquake(float x, float y, float diameter,float speedV,String name) {
 posX = x;
 posY = y;
 angle=0;
-this.speed=speed;
+this.name=name;
+this.speedV=speedV;
 this.diameter= diameter;
 }
 void render(){
@@ -17,7 +18,7 @@ void render(){
    ellipse(posX,posY, d1, d1);
   ellipse(posX,posY, d2, d2);
   ellipse(posX,posY, d3, d3);
-  angle += speed;
+  angle += speedV;
 }
 
 }

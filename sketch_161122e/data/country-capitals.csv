@@ -1,20 +1,20 @@
-CountryName,CapitalName,CapitalLatitude,CapitalLongitude,Status
-Spain,Madrid,40.4,-3.683333,EQ
-Venezuela,Caracas,10.483333333333333,-66.866667,EQ
+CountryName,CapitalName,CapitalLatitude,CapitalLongitude,Status,Magnitude
+Spain,Madrid,40.4,-3.683333,EQ,1.5
+Venezuela,Caracas,10.483333333333333,-66.866667,EQ,5.8
 United States,Washington,38.883333,-77.000000,Nuclear
 China,Beijing,39.916666666666664,116.383333,Nuclear
-Cuba,Havana,23.116666666666667,-82.350000,EQ
-Italy,Rome,41.9,12.483333,EQ
+Cuba,Havana,23.116666666666667,-82.350000,EQ,1.8
+Italy,Rome,41.9,12.483333,EQ,6.0
 Syria,Damascus,33.5,36.300000,Nuclear
 United Kingdom,London,51.5,-0.083333,Nuclear
 Ireland,Dublin,53.31666666666667,-6.233333,Nuclear
-India,New Delhi,28.6,77.200000,EQ
-Thailand,Bangkok,13.75,100.516667,EQ
+India,New Delhi,28.6,77.200000,EQ,2.9
+Thailand,Bangkok,13.75,100.516667,EQ,5.0
 Japan,Tokyo,35.68333333333333,139.750000,Nuclear
-Morocco,Rabat,34.016666666666666,-6.816667,EQ
-Madagascar,Antananarivo,-18.916666666666668,47.516667,null
-Chile,Santiago,-33.45,-70.666667,EQ
-Brazil,Brasilia,-15.783333333333333,-47.916667,EQ
+Morocco,Rabat,34.016666666666666,-6.816667,EQ,1.5
+Madagascar,Antananarivo,-18.916666666666668,47.516667,EQ
+Chile,Santiago,-33.45,-70.666667,EQ,8.7
+Brazil,Brasilia,-15.783333333333333,-47.916667,EQ,1.4
 Equatorial Guinea,Malabo,3.75,8.783333,Nuclear
 North Korea,Pyongyang,39.016666666666666,125.750000,Nuclear
-Russia,Moscow,55.75,37.600000,EQ
+Russia,Moscow,55.75,37.600000,EQ,0.1
