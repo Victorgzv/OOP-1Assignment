@@ -19,8 +19,5 @@ void render(){
   ellipse(posX,posY, d3, d3);
   angle += speed;
 }
-void update(){
 
- 
-}
 }

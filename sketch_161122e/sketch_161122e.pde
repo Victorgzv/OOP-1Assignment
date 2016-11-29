@@ -10,7 +10,7 @@ LifeLine line= new LifeLine(border,180);
 Target target = new Target();
 Wave wave= new Wave(60,250);
 ArrayList<Point> points = new ArrayList<Point>(); 
-
+ArrayList<Earthquake> earthquakes = new ArrayList<Earthquake>(); 
 void setup(){
 fullScreen();
 smooth();
@@ -24,21 +24,22 @@ mono = createFont("lucida-console.ttf",10);
 int selected = -1;
 void mousePressed()
 {
-  for(int i = 0 ; i < points.size() ; i ++)
-  {
+  for(int i = 0 ; i < points.size() ; i ++){
     Point point = points.get(i);
     
     if (dist(mouseX, mouseY, point.screenPos.x, point.screenPos.y)<20)
     {
         selected = i;
     }
-  }  
+  }
+   
 }  
 float zoom=1;
 void draw(){
 background(0);
 drawGrid();
 drawPoints();
+drawEQ();
 displayCoordinates();
 
 clock.render();//call  render
@@ -73,8 +74,18 @@ void loadMapPoints()
   Table table = loadTable("country-capitals.csv", "header");
   for(TableRow row:table.rows())
   {
-    Point point = new Point(row);    
-    points.add(point);
+     Point point = new Point(row);
+    if(row.getString("Status").equals("Nuclear")){
+     
+      points.add(point);
+    }else{
+    float x = point.screenPos.x;
+    float y = point.screenPos.y; 
+   
+     Earthquake eq= new Earthquake (x,y,50,0.5);
+     earthquakes.add(eq);
+     
+    }
   }
 }
 
@@ -119,11 +130,17 @@ void drawPoints(){
   {
     float x = point.screenPos.x;
     float y = point.screenPos.y; 
-    Earthquake e1= new Earthquake(x,y,50,0.5);
-    stroke(#00A511);
-    e1.render();
+  
     imageMode(CENTER);
     image(points_img,x,y,25,25);
     
-  }  
+  }
+}
+void drawEQ(){
+  for(Earthquake eq:earthquakes)
+  {
+    eq.render();
+  }
+  
+  
 }
