@@ -1,5 +1,5 @@
 PFont mono;
-PImage backgroundMap;
+PImage backgroundMap,points_img;
 float mapScreenWidth,mapScreenHeight;  // Dimension of map in pixels.
 float border=120;
 Clock clock= new Clock();
@@ -15,6 +15,7 @@ void setup(){
 fullScreen();
 smooth();
 backgroundMap   = loadImage("w4.jpg");
+points_img   = loadImage("nuclear.png");
 loadMapPoints();
 mapScreenWidth  = width-(border*2);
 mapScreenHeight = height-(border*2);
@@ -38,7 +39,7 @@ void draw(){
 background(0);
 drawGrid();
 drawPoints();
-drawSelectedPoints();
+displayCoordinates();
   
 clock.render();//call  render
 arrow.display();
@@ -73,40 +74,28 @@ void loadMapPoints()
     points.add(point);
   }
 }
-void drawPoints(){
-   for(Point point:points)
-  {
-    float x = point.screenPos.x;
-    float y = point.screenPos.y;  
-    stroke(255, 255, 0);
-    line(x-2, y, x+2, y);
-    line(x, y - 2, x, y + 2);    
-    stroke(255, 0, 0);  
-    noFill();
-    ellipse(x, y, 20,20); 
-  }  
-}
-void drawSelectedPoints(){
-   stroke(0,255,0); 
-  textSize(8);
+
+void displayCoordinates(){
+   stroke(#00A511);
+  textSize(12);
   textFont(mono);
  
 if (selected != -1 )
   {
     Point point1 = points.get(selected);
-    println(selected);
-    text(point1.country, 20,500);
-    text(point1.capital, 20,520);
-    text(point1.longitude+"º",20,540);
-    text(point1.latitude+"º", 20,560);
+    
+    text(point1.country, 10,500);
+    text(point1.capital, 10,520);
+    text(point1.longitude+"º",10,540);
+    text(point1.latitude+"º", 10,560);
   }
 }
 void drawGrid(){
 
   
   rect(border,border,width-(border*2),height-(border*2));
-  //worldmap.loadMap();
-    image(backgroundMap,border,border,mapScreenWidth,mapScreenHeight);
+      imageMode(CORNER);
+  image(backgroundMap,border,border,mapScreenWidth,mapScreenHeight);
   stroke(#3677B7);
  
    for(float x = 0 ; x <=360; x +=10)
@@ -121,4 +110,13 @@ void drawGrid(){
     float ly = map(y, 0, 180, border, height - border);
     line(border, ly, width - border, ly); 
   }
+}
+void drawPoints(){
+   for(Point point:points)
+  {
+    float x = point.screenPos.x;
+    float y = point.screenPos.y;  
+    imageMode(CENTER);
+    image(points_img,x,y,25,25);
+  }  
 }
