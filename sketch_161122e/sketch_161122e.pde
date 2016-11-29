@@ -5,8 +5,7 @@ Clock clock= new Clock();
 Arrow arrow =new Arrow(50,1);
 Circle circle1= new Circle(60,160,100);
 LifeLine line= new LifeLine(border,180);
-//Map worldmap= new Map();
-Button btn1=new Button(50,500,1,"x");
+//Button btn1=new Button(50,500,1,"x");
 Target target = new Target();
 Wave wave= new Wave(60,250);
 ArrayList<Point> points = new ArrayList<Point>(); 
@@ -27,30 +26,25 @@ void mousePressed()
   {
     Point point = points.get(i);
     
-    if (dist(mouseX, mouseY, point.screenPos.x, point.screenPos.y)<10)
+    if (dist(mouseX, mouseY, point.screenPos.x, point.screenPos.y)<20)
     {
-    if (selected == -1)
-      {
         selected = i;
-      }
-   
-    }else{
-        selected =-1;
     }
   }  
 }    
 void draw(){
 background(0);
-println("width "+(width-(border*2)));
-println("height "+(height-(border*2)));
+
 drawGrid();
 drawPoints();
 if (selected != -1 )
   {
     Point point1 = points.get(selected);
-    stroke(255, 255, 0);
-    text(point1.country, border, height - 25);
+    stroke(255);
+     println(selected);
+    text(point1.capital, border, height - 25);
   }
+  
 clock.render();//call  render
 arrow.display();
 arrow.move();
@@ -58,7 +52,7 @@ circle1.update();
 circle1.render();
 line.update();
 line.render();
-btn1.render(1);
+//btn1.render(1);
 target.render();
 wave.render();
 

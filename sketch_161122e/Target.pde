@@ -13,7 +13,7 @@ stroke(255,0,0);
 
 
 textSize(10);
-fill(0);
+fill(255);
 String coord=mouseX+","+mouseY;
 text(coord, mouseX+8 , mouseY+30 );
 noFill();

@@ -2,7 +2,7 @@ class Point
 {
   String country;
   String capital;
-  float posX,posY;
+  float longitude,latitude;
   PVector pos;
   PVector screenPos;
   
@@ -10,7 +10,9 @@ class Point
   {
     country = row.getString("CountryName");
     capital = row.getString("CapitalName");
-    pos = new PVector(row.getFloat("CapitalLongitude"),row.getFloat("CapitalLatitude"));
+    longitude=row.getFloat("CapitalLongitude");
+    latitude=row.getFloat("CapitalLatitude");
+    pos = new PVector(longitude,latitude);
     screenPos = new PVector(
     map(pos.x, -180, 180, border, width - border)
     , map(pos.y, 90, -90, border, height - border)
