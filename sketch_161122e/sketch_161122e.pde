@@ -91,7 +91,34 @@ void loadMapPoints()
     float x = point.screenPos.x;
     float y = point.screenPos.y; 
     String name= point.country;
-     Earthquake eq= new Earthquake (x,y,50,0.5,name);
+    Float magnitude= point.magnitude;
+    float eq_size=0;
+    color c=color(0,255,0);
+    //Richter magnutude scale
+    if(magnitude>0 && magnitude <=1.0){
+     eq_size=5;
+      c=color(0,0,255);
+    }else if(magnitude>=1.0 && magnitude <=1.9){
+     eq_size=10;
+     
+    }else if(magnitude>=2.0 && magnitude <=3.9){
+     eq_size=20;
+    }else if(magnitude>=4.0 && magnitude <=4.9){
+     eq_size=30;
+    }else if(magnitude>=5.0 && magnitude <=5.9){
+     eq_size=40;
+    }else if(magnitude>=6.0 && magnitude <=6.9){
+     eq_size=50;
+    }else if(magnitude>=7.0 && magnitude <=7.9){
+      eq_size=60;
+    }else if(magnitude>=8.0 && magnitude <=8.9){
+      eq_size=70;
+    }else if(magnitude>=9.0){
+       eq_size=80;
+       c=color(255,0,0);
+    }
+    
+     Earthquake eq= new Earthquake (x,y,eq_size,0.9,name,c,description);
      earthquakes.add(eq);
      //println(point.country +" "+eq.posX+" "+eq.posY);
      

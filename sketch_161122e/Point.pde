@@ -3,7 +3,7 @@ class Point
   String country;
   String capital;
   String status;
-  float longitude,latitude;
+  float longitude,latitude,magnitude;
   PVector pos;
   PVector screenPos;
   
@@ -13,6 +13,7 @@ class Point
     capital = row.getString("CapitalName");
     longitude=row.getFloat("CapitalLongitude");
     latitude=row.getFloat("CapitalLatitude");
+    magnitude=row.getFloat("Magnitude");
     status= row.getString("Status");
     pos = new PVector(longitude,latitude);
     screenPos = new PVector(
